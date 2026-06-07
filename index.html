@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>思考の未来 ｜ AIが思考を奪う時代に、考える快楽を取り戻す</title>
+<meta name="description" content="戦略コンサル・投資ファンド・経営の現場で20年「思考のプロ」を生業にしてきた著者が、AI時代に思考がどう変わるのかを描く一冊。発売前に読者登録を受け付けています。">
+<meta property="og:title" content="思考の未来 ｜ AIが思考を奪う時代に、考える快楽を取り戻す">
+<meta property="og:description" content="思考と処理は分離する。考えることが、嗜好品になる。──AI時代の思考論。発売前読者登録、受付中。">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede1;
+    --paper-2: #ebe1d0;
+    --ink: #1a1714;
+    --ink-soft: #3a3530;
+    --ink-mute: #7a7065;
+    --line: rgba(26, 23, 20, 0.12);
+    --pill: #a23535;
+    --pill-soft: #c75252;
+    --gold: #8a6d3a;
+    --indigo: #2a3548;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 300;
+    line-height: 1.95;
+    letter-spacing: 0.045em;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(138, 109, 58, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(42, 53, 72, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .en {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+  }
+  .en-i { font-style: italic; }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .wide { max-width: 980px; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 100px 28px 80px;
+    text-align: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: clamp(280px, 42vw, 460px);
+    height: clamp(280px, 42vw, 460px);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, var(--pill-soft) 0%, var(--pill) 45%, #6a1d1d 100%);
+    box-shadow:
+      0 30px 80px rgba(162, 53, 53, 0.25),
+      inset -20px -30px 60px rgba(0,0,0,0.35),
+      inset 20px 20px 40px rgba(255, 180, 180, 0.2);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.08;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 720px; }
+  .hero .eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.45em;
+    color: var(--ink-mute);
+    margin-bottom: 32px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    line-height: 1.3;
+    margin-bottom: 28px;
+    color: var(--ink);
+  }
+  .hero h1 .accent {
+    color: var(--pill);
+    position: relative;
+  }
+  .hero .sub {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    color: var(--ink-soft);
+    margin-bottom: 56px;
+    line-height: 2.1;
+    font-weight: 400;
+  }
+  .hero .sub em {
+    font-style: normal;
+    color: var(--pill);
+    font-weight: 500;
+  }
+  .hero .cta {
+    display: inline-block;
+    padding: 18px 44px;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    font-weight: 500;
+    border-radius: 2px;
+    transition: all 0.4s ease;
+    border: 1px solid var(--ink);
+  }
+  .hero .cta:hover {
+    background: var(--pill);
+    border-color: var(--pill);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(162, 53, 53, 0.25);
+  }
+  .hero .cta-note {
+    margin-top: 18px;
+    font-size: 0.78rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.15em;
+  }
+  .scroll-mark {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    color: var(--ink-mute);
+    font-family: 'Cormorant Garamond', serif;
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+    50% { opacity: 1; transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* SECTION COMMON */
+  section { padding: 120px 0; position: relative; }
+  .section-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.5em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
+  }
+  h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1.7;
+    margin-bottom: 48px;
+    color: var(--ink);
+  }
+  h2 .marker {
+    color: var(--pill);
+    font-weight: 700;
+  }
+  .body-text {
+    font-size: clamp(1rem, 1.2vw, 1.08rem);
+    color: var(--ink-soft);
+    line-height: 2.15;
+  }
+  .body-text + .body-text { margin-top: 1.6em; }
+  .body-text strong {
+    color: var(--ink);
+    font-weight: 500;
+    background: linear-gradient(transparent 65%, rgba(162, 53, 53, 0.15) 65%);
+    padding: 0 2px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    text-align: center;
+    padding: 60px 0;
+  }
+  .divider::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 0.6rem;
+    letter-spacing: 2.5em;
+    margin-left: 2.5em;
+  }
+
+  /* WHY NOW */
+  .why { background: var(--paper-2); }
+  .why-quote {
+    font-size: clamp(1.2rem, 2vw, 1.55rem);
+    font-weight: 500;
+    line-height: 2;
+    color: var(--ink);
+    text-align: center;
+    margin: 0 auto 56px;
+    max-width: 640px;
+    position: relative;
+    padding: 0 24px;
+  }
+  .why-quote::before, .why-quote::after {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--pill);
+    font-size: 3rem;
+    line-height: 0;
+    position: relative;
+    top: 12px;
+    opacity: 0.5;
+  }
+  .why-quote::before { margin-right: 8px; }
+  .why-quote::after { margin-left: 8px; }
+
+  /* 3 PARTS */
+  .parts { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 56px; }
+  @media (min-width: 800px) {
+    .parts { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  }
+  .part {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 40px 32px 36px;
+    border-radius: 2px;
+    position: relative;
+    transition: all 0.4s ease;
+  }
+  .part:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(26, 23, 20, 0.08);
+  }
+  .part-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--pill);
+    letter-spacing: 0.3em;
+    margin-bottom: 12px;
+  }
+  .part-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 18px;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+  }
+  .part-title small {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.3em;
+    font-weight: 300;
+    margin-top: 6px;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .part-body {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 2;
+  }
+
+  /* CHAPTERS */
+  .chapters { background: var(--paper-2); }
+  .chapter-list {
+    margin-top: 48px;
+    border-top: 1px solid var(--line);
+  }
+  .chapter {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    padding: 22px 8px;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+    transition: background 0.3s ease;
+  }
+  .chapter:hover { background: rgba(162, 53, 53, 0.03); }
+  .chapter-no {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.95rem;
+    letter-spacing: 0.2em;
+  }
+  .chapter-title {
+    font-size: 1.05rem;
+    color: var(--ink);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+  }
+  .chapter-title small {
+    display: block;
+    color: var(--ink-mute);
+    font-size: 0.82rem;
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+    font-weight: 300;
+  }
+
+  /* AUDIENCE */
+  .audience-list {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .audience-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    font-size: 1.02rem;
+    color: var(--ink-soft);
+    line-height: 1.9;
+  }
+  .audience-item::before {
+    content: '—';
+    color: var(--pill);
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+
+  /* AUTHOR */
+  .author { background: var(--paper-2); }
+  .author-card {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .author-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--ink-mute);
+    letter-spacing: 0.3em;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+  .author-name {
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    margin-bottom: 32px;
+    color: var(--ink);
+  }
+  .author-body { font-size: 1rem; color: var(--ink-soft); line-height: 2.1; }
+  .author-body + .author-body { margin-top: 1.4em; }
+
+  /* FORM */
+  .form-section {
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+  .form-section::before {
+    content: '';
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, var(--pill-soft), var(--pill) 50%, #5a1818 100%);
+    top: -120px;
+    right: -120px;
+    opacity: 0.12;
+    filter: blur(4px);
+  }
+  .form-section h2 { color: var(--paper); }
+  .form-section .section-tag { color: rgba(243, 236, 224, 0.55); }
+  .form-lead {
+    font-size: 1.05rem;
+    color: rgba(243, 236, 224, 0.85);
+    line-height: 2.1;
+    margin-bottom: 44px;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 480px;
+  }
+  .form label {
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    color: rgba(243, 236, 224, 0.7);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+  }
+  .form input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(243, 236, 224, 0.3);
+    padding: 12px 4px;
+    color: var(--paper);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.02rem;
+    letter-spacing: 0.05em;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .form input:focus { border-bottom-color: var(--pill-soft); }
+  .form .field { display: flex; flex-direction: column; gap: 6px; }
+  .form button {
+    margin-top: 24px;
+    background: var(--pill);
+    color: var(--paper);
+    border: none;
+    padding: 18px 32px;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  .form button:hover:not(:disabled) {
+    background: var(--pill-soft);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(162, 53, 53, 0.4);
+  }
+  .form button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .form-note {
+    margin-top: 24px;
+    font-size: 0.78rem;
+    color: rgba(243, 236, 224, 0.5);
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+  }
+  .form-message {
+    margin-top: 20px;
+    padding: 16px 20px;
+    border-radius: 2px;
+    font-size: 0.92rem;
+    letter-spacing: 0.05em;
+    display: none;
+  }
+  .form-message.show { display: block; }
+  .form-message.success {
+    background: rgba(212, 175, 55, 0.15);
+    color: #f0d989;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+  }
+  .form-message.error {
+    background: rgba(199, 82, 82, 0.15);
+    color: #ffb0b0;
+    border: 1px solid rgba(199, 82, 82, 0.3);
+  }
+
+  /* CLOSING */
+  .closing {
+    text-align: center;
+    padding: 140px 28px;
+  }
+  .closing-quote {
+    font-size: clamp(1.3rem, 2.3vw, 1.7rem);
+    font-weight: 500;
+    line-height: 2.1;
+    color: var(--ink);
+    max-width: 640px;
+    margin: 0 auto 36px;
+    letter-spacing: 0.08em;
+  }
+  .closing-quote .accent { color: var(--pill); }
+  .closing-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--ink-mute);
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 40px 28px;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.15em;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 80px 0; }
+    .chapter { grid-template-columns: 60px 1fr; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Coming Soon  ·  2026</div>
+    <h1>思考の<span class="accent">未来</span></h1>
+    <p class="sub">
+      AIが「処理」を奪っていくこの時代に、<br>
+      <em>考えること</em>は、<em>嗜好品</em>になる。<br><br>
+      ── 戦略コンサル・投資ファンド・経営の現場で<br>
+      20年「思考」を生業にしてきた著者が描く、<br>
+      AI時代の思考論。
+    </p>
+    <a href="#register" class="cta">発売前に登録する</a>
+    <div class="cta-note">発売時にメールでお知らせします</div>
+  </div>
+  <div class="scroll-mark">scroll</div>
+</section>
+
+<!-- WHY NOW -->
+<section class="why">
+  <div class="container">
+    <span class="section-tag">Prologue</span>
+    <h2>多くの人はこの<span class="marker">構造変化</span>に気づかないまま、<br>一生を終える。</h2>
+
+    <div class="body-text">
+      私たちの脳の動きが、<strong>「思考」と「処理」</strong>に分かれていく。<br>
+      ロジックやルールで物事を整理することは「処理」とされ、AIに取って代わられる。これまで「思考」と思われていたものの大半は、実は思考ですらなかった ── そう定義される時代がもうすぐ来ます。
+    </div>
+
+    <div class="body-text">
+      AIに雑に問いを投げても、推論力の強化されたAIが文脈を補完して答えてくれる。本当は<strong>自分で考えたのは2割程度</strong>なのに、「最初から自分はそう考えていた」かのように感じてしまう。<br>
+      自分の頭が良くなったと錯覚し、知性を鍛える場が減っていく。
+    </div>
+
+    <div class="body-text">
+      この本は、その構造変化を見るためのレンズです。<br>
+      そして同時に、変化のなかで <strong>「考える快楽」を取り戻すための道のり</strong> を描いた本でもあります。
+    </div>
+  </div>
+</section>
+
+<!-- 3 PARTS -->
+<section>
+  <div class="container wide">
+    <span class="section-tag">Structure</span>
+    <h2>三部構成で、思考の<span class="marker">行く先</span>をたどります。</h2>
+
+    <div class="parts">
+      <div class="part">
+        <div class="part-num">PART  I</div>
+        <div class="part-title">侵食<small>AI ERODES</small></div>
+        <div class="part-body">
+          AIが思考を奪う。<br>
+          思考と処理の分離、思考の空洞化、高度に騙される時代、働き方と教育の地殻変動 ── まず、いま起きている地滑りを見つめます。
+        </div>
+      </div>
+      <div class="part">
+        <div class="part-num">PART  II</div>
+        <div class="part-title">逆説<small>NEW VALUE</small></div>
+        <div class="part-body">
+          AIが生み出す、新しい価値。<br>
+          無駄と時間の再評価、言わない技術、グラデーションと複雑系、嗜好の未来 ── AIに代替されないものの輪郭を描きます。
+        </div>
+      </div>
+      <div class="part">
+        <div class="part-num">PART  III</div>
+        <div class="part-title">回帰<small>WHAT IS HUMAN</small></div>
+        <div class="part-body">
+          人間とは何か、への問い。<br>
+          意識・死・時間、アナログとテロワール、人格と会社の嗜好品化 ── 構造変化の先で、人間が立ち戻る場所を考えます。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CHAPTERS -->
+<section class="chapters">
+  <div class="container">
+    <span class="section-tag">Contents</span>
+    <h2>目次より<span class="marker">、</span>抜粋。</h2>
+
+    <div class="chapter-list">
+      <div class="chapter"><div class="chapter-no">序章</div><div class="chapter-title">認知の扉を開く<small>赤いピルを飲むか、知らないままでいるか</small></div></div>
+      <div class="chapter"><div class="chapter-no">第1章</div><div class="chapter-title">思考と処理の分離</div></div>
+      <div class="chapter"><div class="chapter-no">第2章</div><div class="chapter-title">思考の空洞化</div></div>
+      <div class="chapter"><div class="chapter-no">第3章</div><div class="chapter-title">高度に騙される時代</div></div>
+      <div class="chapter"><div class="chapter-no">第4章</div><div class="chapter-title">働き方・稼ぎ方の未来</div></div>
+      <div class="chapter"><div class="chapter-no">第5章</div><div class="chapter-title">学校と次世代の未来</div></div>
+      <div class="chapter"><div class="chapter-no">第6章</div><div class="chapter-title">社会・政治構造の変容</div></div>
+      <div class="chapter"><div class="chapter-no">第7章</div><div class="chapter-title">無駄と時間の再評価</div></div>
+      <div class="chapter"><div class="chapter-no">第8章</div><div class="chapter-title">言語の爆発と沈黙の戦略</div></div>
+      <div class="chapter"><div class="chapter-no">第9章</div><div class="chapter-title">グラデーションと複雑系の価値</div></div>
+      <div class="chapter"><div class="chapter-no">第10章</div><div class="chapter-title">嗜好の未来</div></div>
+      <div class="chapter"><div class="chapter-no">第11章</div><div class="chapter-title">意識・死・時間の再発見</div></div>
+      <div class="chapter"><div class="chapter-no">第12章</div><div class="chapter-title">アナログ・テロワール・地域の再起</div></div>
+      <div class="chapter"><div class="chapter-no">第13章</div><div class="chapter-title">思考の多様化と哲学の進化</div></div>
+      <div class="chapter"><div class="chapter-no">第14章</div><div class="chapter-title">人間・人格・会社の嗜好品化</div></div>
+      <div class="chapter"><div class="chapter-no">終章</div><div class="chapter-title">赤いピルの先に<small>思考で快楽を感じる猿が、勝つ時代になる</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section>
+  <div class="container">
+    <span class="section-tag">For You</span>
+    <h2>こんな方に<span class="marker">、</span>届けたい本です。</h2>
+
+    <div class="audience-list">
+      <div class="audience-item">AIを毎日使いながら、なぜか「自分の思考」が痩せていく気がしている方へ。</div>
+      <div class="audience-item">「考えること」を、もう一度、楽しい時間として取り戻したい方へ。</div>
+      <div class="audience-item">子どもや次の世代に、AI時代の知性をどう手渡すかを考えている親御さんへ。</div>
+      <div class="audience-item">経営・事業・組織の未来を、構造から考え直したいビジネスパーソンへ。</div>
+      <div class="audience-item">そして ── 一度マトリックスの赤いピルを覗き込んでみたいすべての方へ。</div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section class="author">
+  <div class="container">
+    <div class="author-card">
+      <div class="author-label">About the Author</div>
+      <div class="author-name">小澤 真生  ／  TnS OZAWA</div>
+
+      <div class="author-body">
+        新卒で戦略コンサルティングに従事し、投資ファンドを経て、現在は事業会社の経営に携わる。学生時代のインターンから数えて20年近く、「考えること」を生業にしてきた。思考のプロを自負する一方で、それ以上に <strong>考えること自体が好きな</strong> 人間でもある。
+      </div>
+
+      <div class="author-body">
+        ChatGPT-3.5が世に出た2025年頃からAIを触り始め、当初はあまりにのめり込みすぎて、AIと議論して号泣したことが何度もあった ── と自ら明かす。今も複数のAIを使い、思考の延長線として日々その恩恵を受けている。
+      </div>
+
+      <div class="author-body">
+        思考のプロを生業とし、かつAIを日常的にそばに置くからこそ書ける一冊として、本書を執筆した。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="register">
+  <div class="container">
+    <span class="section-tag">Pre-Register</span>
+    <h2>発売のお知らせを、お届けします。</h2>
+
+    <p class="form-lead">
+      『思考の未来』は現在、執筆・編集を進めています。<br>
+      発売準備が整いましたら、ご登録いただいたメールアドレスへ、いちばん最初にご案内いたします。
+    </p>
+
+    <form class="form" id="preorderForm" autocomplete="off">
+      <div class="field">
+        <label for="name">お名前 ／ Name (任意)</label>
+        <input type="text" id="name" name="name" placeholder="例)  小澤 真生">
+      </div>
+      <div class="field">
+        <label for="email">メールアドレス ／ Email *</label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com">
+      </div>
+      <button type="submit" id="submitBtn">登録する</button>
+      <div class="form-message" id="formMessage"></div>
+    </form>
+
+    <p class="form-note">
+      ご登録いただいた情報は、本書および関連書籍の案内のみに使用し、第三者への提供は行いません。<br>
+      いつでも配信停止できます。
+    </p>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="container">
+    <p class="closing-quote">
+      変化が激しく、厄災に見えるものが多い世の中だからこそ、<br>
+      <span class="accent">赤いピル</span>という知性を手に入れれば、<br>
+      人生は楽しく、楽になる。
+    </p>
+    <div class="closing-sub">— This is the hope.</div>
+  </div>
+</section>
+
+<footer>
+  © 2026  TnS OZAWA  ·  思考の未来  ·  ALL RIGHTS RESERVED
+</footer>
+
+<!-- Supabase Client -->
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
+
+  // ▼▼ Supabase設定（プロジェクト作成後にここを書き換える）▼▼
+  const SUPABASE_URL = 'YOUR_SUPABASE_URL'
+  const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY'
+  // ▲▲
+
+  const form = document.getElementById('preorderForm')
+  const msgEl = document.getElementById('formMessage')
+  const btn = document.getElementById('submitBtn')
+
+  function showMsg(text, type) {
+    msgEl.textContent = text
+    msgEl.className = `form-message show ${type}`
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    msgEl.className = 'form-message'
+    btn.disabled = true
+    btn.textContent = '送信中...'
+
+    const email = document.getElementById('email').value.trim()
+    const name = document.getElementById('name').value.trim() || null
+
+    if (SUPABASE_URL === 'YOUR_SUPABASE_URL') {
+      showMsg('（開発中）Supabase接続前です。後ほどお試しください。', 'error')
+      btn.disabled = false
+      btn.textContent = '登録する'
+      return
+    }
+
+    try {
+      const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+      const { error } = await supabase
+        .from('book_preorders')
+        .insert([{ email, name, source: 'lp' }])
+
+      if (error) {
+        if (error.code === '23505') {
+          showMsg('このメールアドレスは既にご登録済みです。ありがとうございます。', 'success')
+        } else {
+          showMsg('登録に失敗しました。時間をおいて再度お試しください。', 'error')
+          console.error(error)
+        }
+      } else {
+        showMsg('ご登録ありがとうございます。発売時にお知らせをお送りします。', 'success')
+        form.reset()
+      }
+    } catch (err) {
+      showMsg('通信エラーが発生しました。再度お試しください。', 'error')
+      console.error(err)
+    } finally {
+      btn.disabled = false
+      btn.textContent = '登録する'
+    }
+  })
+</script>
+
+</body>
+</html>
