@@ -13,22 +13,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #f4ede1;
-    --paper-2: #ebe1d0;
-    --ink: #1a1714;
-    --ink-soft: #3a3530;
-    --ink-mute: #7a7065;
-    --line: rgba(26, 23, 20, 0.12);
-    --pill: #a23535;
-    --pill-soft: #c75252;
-    --gold: #8a6d3a;
-    --indigo: #2a3548;
-    --night: #0b1220;
+    /* 書影トーン (深い夜空 + 金の光 + 赤いピル) */
+    --night: #0b1220;          /* メイン背景 */
+    --night-2: #121b2e;         /* 副背景(セクション交互) */
+    --night-3: #1a2438;         /* カード地 */
+    --line: rgba(239, 230, 214, 0.10);
+    --ink: #efe6d6;             /* 本文テキスト(温かいクリーム) */
+    --ink-soft: rgba(239, 230, 214, 0.78);
+    --ink-mute: rgba(239, 230, 214, 0.45);
+    --gold: #d4af6f;            /* 書影の光の金 */
+    --gold-bright: #f0c878;
+    --pill: #c75252;            /* 暗背景上で映える赤 */
+    --pill-deep: #a23535;
+    /* 紙色(部分反転用) */
+    --paper: #efe6d6;
+    --paper-ink: #1a1714;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    background: var(--paper);
+    background: var(--night);
     color: var(--ink);
     font-family: 'Noto Serif JP', serif;
     font-weight: 300;
@@ -36,6 +40,16 @@
     letter-spacing: 0.045em;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(212, 175, 111, 0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(199, 82, 82, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
   }
   .en {
     font-family: 'Cormorant Garamond', serif;
@@ -55,10 +69,11 @@
   .hero {
     min-height: 100vh;
     background:
-      radial-gradient(ellipse at 30% 20%, rgba(42, 53, 72, 0.95) 0%, transparent 55%),
-      radial-gradient(ellipse at 80% 80%, rgba(162, 53, 53, 0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 30% 15%, rgba(42, 53, 72, 0.6) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 85%, rgba(199, 82, 82, 0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 50%, rgba(212, 175, 111, 0.04) 0%, transparent 70%),
       var(--night);
-    color: #efe6d6;
+    color: var(--ink);
     display: flex;
     align-items: center;
     padding: 80px 28px;
@@ -108,7 +123,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 0.85rem;
-    color: rgba(239, 230, 214, 0.5);
+    color: var(--ink-mute);
     letter-spacing: 0.25em;
   }
   .hero-text {
@@ -121,12 +136,12 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 0.95rem;
     letter-spacing: 0.5em;
-    color: rgba(239, 230, 214, 0.55);
+    color: var(--ink-mute);
     margin-bottom: 28px;
     text-transform: uppercase;
   }
   .hero-eyebrow .dot {
-    color: var(--pill-soft);
+    color: var(--pill);
     margin: 0 14px;
   }
   .hero h1 {
@@ -135,11 +150,10 @@
     letter-spacing: 0.08em;
     line-height: 1.5;
     margin-bottom: 28px;
-    color: #f4ede1;
+    color: var(--ink);
   }
   .hero h1 .accent {
-    color: #f0c878;
-    background: linear-gradient(180deg, #f0d78a 0%, #c79a3a 100%);
+    background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 60%, #a07a3a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -147,12 +161,12 @@
   .hero-sub {
     font-size: clamp(1rem, 1.3vw, 1.1rem);
     line-height: 2.1;
-    color: rgba(239, 230, 214, 0.82);
+    color: var(--ink-soft);
     margin-bottom: 44px;
     font-weight: 400;
   }
   .hero-sub strong {
-    color: #f4ede1;
+    color: var(--ink);
     font-weight: 500;
   }
   .hero-cta {
@@ -172,9 +186,10 @@
     border: 1px solid var(--pill);
   }
   .hero-cta:hover {
-    background: var(--pill-soft);
+    background: var(--pill-deep);
+    border-color: var(--pill-deep);
     transform: translateY(-2px);
-    box-shadow: 0 12px 35px rgba(162, 53, 53, 0.45);
+    box-shadow: 0 12px 35px rgba(199, 82, 82, 0.45);
   }
   .hero-cta .arrow {
     font-family: 'Cormorant Garamond', serif;
@@ -186,7 +201,7 @@
     display: block;
     margin-top: 16px;
     font-size: 0.78rem;
-    color: rgba(239, 230, 214, 0.5);
+    color: var(--ink-mute);
     letter-spacing: 0.2em;
   }
 
@@ -209,7 +224,7 @@
     margin-bottom: 48px;
     color: var(--ink);
   }
-  h2 .marker { color: var(--pill); font-weight: 700; }
+  h2 .marker { color: var(--gold); font-weight: 500; }
   .body-text {
     font-size: clamp(1rem, 1.2vw, 1.08rem);
     color: var(--ink-soft);
@@ -219,7 +234,7 @@
   .body-text strong {
     color: var(--ink);
     font-weight: 500;
-    background: linear-gradient(transparent 65%, rgba(162, 53, 53, 0.15) 65%);
+    background: linear-gradient(transparent 65%, rgba(212, 175, 111, 0.22) 65%);
     padding: 0 2px;
   }
 
@@ -234,7 +249,7 @@
   }
 
   /* PROLOGUE */
-  .prologue { background: var(--paper-2); }
+  .prologue { background: var(--night-2); }
   .prologue-pull {
     font-size: clamp(1.4rem, 2.4vw, 1.85rem);
     font-weight: 500;
@@ -247,7 +262,7 @@
   }
   .prologue-pull em {
     font-style: normal;
-    color: var(--pill);
+    color: var(--gold);
   }
 
   /* THEMES (3部構成 - 章番号は出さない) */
@@ -261,7 +276,7 @@
     .themes-grid { grid-template-columns: repeat(3, 1fr); gap: 28px; }
   }
   .theme {
-    background: var(--paper);
+    background: linear-gradient(180deg, var(--night-3) 0%, var(--night-2) 100%);
     border: 1px solid var(--line);
     padding: 44px 32px 40px;
     border-radius: 2px;
@@ -270,13 +285,14 @@
   }
   .theme:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 50px rgba(26, 23, 20, 0.08);
+    border-color: rgba(212, 175, 111, 0.25);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
   }
   .theme-num {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 0.95rem;
-    color: var(--pill);
+    color: var(--gold);
     letter-spacing: 0.3em;
     margin-bottom: 14px;
   }
@@ -304,7 +320,7 @@
   }
 
   /* KEY CONCEPTS — 書影下部のラベルにインスパイア */
-  .concepts { background: var(--paper-2); }
+  .concepts { background: var(--night-2); }
   .concepts-list {
     margin-top: 48px;
     display: grid;
@@ -315,13 +331,18 @@
     .concepts-list { grid-template-columns: repeat(2, 1fr); gap: 18px; }
   }
   .concept {
-    background: var(--paper);
+    background: var(--night-3);
     padding: 22px 26px;
-    border-left: 3px solid var(--pill);
+    border-left: 3px solid var(--gold);
     font-size: 1rem;
     color: var(--ink-soft);
     line-height: 1.9;
     letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+  }
+  .concept:hover {
+    border-left-color: var(--pill);
+    background: linear-gradient(90deg, rgba(199, 82, 82, 0.06) 0%, var(--night-3) 100%);
   }
   .concept strong {
     display: block;
@@ -348,13 +369,13 @@
   }
   .audience-item::before {
     content: '—';
-    color: var(--pill);
+    color: var(--gold);
     flex-shrink: 0;
     font-weight: 500;
   }
 
   /* AUTHOR */
-  .author { background: var(--paper-2); }
+  .author { background: var(--night-2); }
   .author-card { max-width: 640px; margin: 0 auto; }
   .author-label {
     font-family: 'Cormorant Garamond', serif;
@@ -376,10 +397,15 @@
 
   /* FORM */
   .form-section {
-    background: var(--ink);
-    color: var(--paper);
+    background:
+      radial-gradient(ellipse at 70% 30%, rgba(199, 82, 82, 0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 80%, rgba(212, 175, 111, 0.06) 0%, transparent 50%),
+      var(--night);
+    color: var(--ink);
     position: relative;
     overflow: hidden;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
   }
   .form-section::before {
     content: '';
@@ -387,17 +413,17 @@
     width: 380px;
     height: 380px;
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, var(--pill-soft), var(--pill) 50%, #5a1818 100%);
+    background: radial-gradient(circle at 35% 35%, var(--pill), var(--pill-deep) 50%, #5a1818 100%);
     top: -120px;
     right: -120px;
-    opacity: 0.12;
+    opacity: 0.18;
     filter: blur(4px);
   }
-  .form-section h2 { color: var(--paper); }
-  .form-section .section-tag { color: rgba(243, 236, 224, 0.55); }
+  .form-section h2 { color: var(--ink); }
+  .form-section .section-tag { color: var(--ink-mute); }
   .form-lead {
     font-size: 1.05rem;
-    color: rgba(243, 236, 224, 0.85);
+    color: var(--ink-soft);
     line-height: 2.1;
     margin-bottom: 44px;
   }
@@ -410,28 +436,29 @@
   .form label {
     font-size: 0.82rem;
     letter-spacing: 0.18em;
-    color: rgba(243, 236, 224, 0.7);
+    color: var(--ink-mute);
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
   }
   .form input {
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(243, 236, 224, 0.3);
+    border-bottom: 1px solid rgba(239, 230, 214, 0.3);
     padding: 12px 4px;
-    color: var(--paper);
+    color: var(--ink);
     font-family: 'Noto Serif JP', serif;
     font-size: 1.02rem;
     letter-spacing: 0.05em;
     outline: none;
     transition: border-color 0.3s;
   }
-  .form input:focus { border-bottom-color: var(--pill-soft); }
+  .form input::placeholder { color: rgba(239, 230, 214, 0.25); }
+  .form input:focus { border-bottom-color: var(--gold); }
   .form .field { display: flex; flex-direction: column; gap: 6px; }
   .form button {
     margin-top: 24px;
     background: var(--pill);
-    color: var(--paper);
+    color: #fff;
     border: none;
     padding: 18px 32px;
     font-family: 'Noto Serif JP', serif;
@@ -443,15 +470,15 @@
     font-weight: 500;
   }
   .form button:hover:not(:disabled) {
-    background: var(--pill-soft);
+    background: var(--pill-deep);
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(162, 53, 53, 0.4);
+    box-shadow: 0 12px 30px rgba(199, 82, 82, 0.4);
   }
   .form button:disabled { opacity: 0.5; cursor: not-allowed; }
   .form-note {
     margin-top: 24px;
     font-size: 0.78rem;
-    color: rgba(243, 236, 224, 0.5);
+    color: var(--ink-mute);
     letter-spacing: 0.1em;
     line-height: 1.8;
   }
@@ -465,9 +492,9 @@
   }
   .form-message.show { display: block; }
   .form-message.success {
-    background: rgba(212, 175, 55, 0.15);
-    color: #f0d989;
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: rgba(212, 175, 111, 0.15);
+    color: var(--gold-bright);
+    border: 1px solid rgba(212, 175, 111, 0.3);
   }
   .form-message.error {
     background: rgba(199, 82, 82, 0.15);
@@ -479,6 +506,7 @@
   .closing {
     text-align: center;
     padding: 140px 28px;
+    background: var(--night-2);
   }
   .closing-quote {
     font-size: clamp(1.3rem, 2.3vw, 1.7rem);
@@ -489,7 +517,12 @@
     margin: 0 auto 36px;
     letter-spacing: 0.08em;
   }
-  .closing-quote .accent { color: var(--pill); }
+  .closing-quote .accent {
+    background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
   .closing-sub {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -507,7 +540,11 @@
     color: var(--ink-mute);
     letter-spacing: 0.15em;
     font-family: 'Cormorant Garamond', serif;
+    background: var(--night);
   }
+
+  /* DIVIDER */
+  .divider::before { color: var(--gold); opacity: 0.6; }
 
   @media (max-width: 600px) {
     section { padding: 80px 0; }
