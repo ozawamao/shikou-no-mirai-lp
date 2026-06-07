@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>思考の未来 ｜ AIが思考を奪う時代に、考える快楽を取り戻す</title>
-<meta name="description" content="戦略コンサル・投資ファンド・経営の現場で20年「思考のプロ」を生業にしてきた著者が、AI時代に思考がどう変わるのかを描く一冊。発売前に読者登録を受け付けています。">
-<meta property="og:title" content="思考の未来 ｜ AIが思考を奪う時代に、考える快楽を取り戻す">
-<meta property="og:description" content="思考と処理は分離する。考えることが、嗜好品になる。──AI時代の思考論。発売前読者登録、受付中。">
+<title>思考の未来 ｜ AI時代に人間の知性はどう生きるのか</title>
+<meta name="description" content="認知してしまったら、戻れない世界がある。── 戦略コンサル・投資ファンド・経営の現場で20年「思考」を生業にしてきた著者が描く、AI時代の思考論。発売前読者登録、受付中。">
+<meta property="og:title" content="思考の未来 ｜ AI時代に人間の知性はどう生きるのか">
+<meta property="og:description" content="認知してしまったら、戻れない世界がある。赤いピルを飲むか、青いピルを飲むか── 新しい認知の扉を開く一冊。発売前読者登録、受付中。">
 <meta property="og:type" content="website">
+<meta property="og:image" content="cover.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23a23535'/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -21,6 +23,7 @@
     --pill-soft: #c75252;
     --gold: #8a6d3a;
     --indigo: #2a3548;
+    --night: #0b1220;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -34,22 +37,11 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      radial-gradient(circle at 20% 30%, rgba(138, 109, 58, 0.04) 0%, transparent 40%),
-      radial-gradient(circle at 80% 70%, rgba(42, 53, 72, 0.05) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-  }
   .en {
     font-family: 'Cormorant Garamond', serif;
     letter-spacing: 0.18em;
     color: var(--ink-mute);
   }
-  .en-i { font-style: italic; }
   .container {
     max-width: 760px;
     margin: 0 auto;
@@ -57,74 +49,119 @@
     position: relative;
     z-index: 1;
   }
-  .wide { max-width: 980px; }
+  .wide { max-width: 1100px; }
 
-  /* HERO */
+  /* HERO — 書影中心 */
   .hero {
     min-height: 100vh;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(42, 53, 72, 0.95) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 80%, rgba(162, 53, 53, 0.18) 0%, transparent 55%),
+      var(--night);
+    color: #efe6d6;
     display: flex;
     align-items: center;
-    justify-content: center;
+    padding: 80px 28px;
     position: relative;
-    padding: 100px 28px 80px;
-    text-align: center;
+    overflow: hidden;
   }
   .hero::before {
     content: '';
     position: absolute;
-    width: clamp(280px, 42vw, 460px);
-    height: clamp(280px, 42vw, 460px);
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, var(--pill-soft) 0%, var(--pill) 45%, #6a1d1d 100%);
-    box-shadow:
-      0 30px 80px rgba(162, 53, 53, 0.25),
-      inset -20px -30px 60px rgba(0,0,0,0.35),
-      inset 20px 20px 40px rgba(255, 180, 180, 0.2);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0.08;
-    z-index: 0;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 40%);
     pointer-events: none;
   }
-  .hero-inner { position: relative; z-index: 1; max-width: 720px; }
-  .hero .eyebrow {
+  .hero-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  @media (min-width: 900px) {
+    .hero-grid {
+      grid-template-columns: minmax(280px, 0.85fr) 1fr;
+      gap: 80px;
+    }
+  }
+  .hero-cover {
+    text-align: center;
+  }
+  .hero-cover img {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    box-shadow:
+      0 30px 80px rgba(0, 0, 0, 0.5),
+      0 10px 30px rgba(162, 53, 53, 0.2);
+    border-radius: 2px;
+    transition: transform 0.5s ease;
+  }
+  .hero-cover img:hover { transform: translateY(-4px); }
+  .hero-cover-note {
+    margin-top: 18px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(239, 230, 214, 0.5);
+    letter-spacing: 0.25em;
+  }
+  .hero-text {
+    text-align: left;
+  }
+  @media (max-width: 899px) {
+    .hero-text { text-align: center; }
+  }
+  .hero-eyebrow {
     font-family: 'Cormorant Garamond', serif;
     font-size: 0.95rem;
-    letter-spacing: 0.45em;
-    color: var(--ink-mute);
-    margin-bottom: 32px;
+    letter-spacing: 0.5em;
+    color: rgba(239, 230, 214, 0.55);
+    margin-bottom: 28px;
     text-transform: uppercase;
   }
+  .hero-eyebrow .dot {
+    color: var(--pill-soft);
+    margin: 0 14px;
+  }
   .hero h1 {
-    font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
     font-weight: 500;
-    letter-spacing: 0.12em;
-    line-height: 1.3;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
     margin-bottom: 28px;
-    color: var(--ink);
+    color: #f4ede1;
   }
   .hero h1 .accent {
-    color: var(--pill);
-    position: relative;
+    color: #f0c878;
+    background: linear-gradient(180deg, #f0d78a 0%, #c79a3a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-  .hero .sub {
-    font-size: clamp(1rem, 1.5vw, 1.15rem);
-    color: var(--ink-soft);
-    margin-bottom: 56px;
+  .hero-sub {
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
     line-height: 2.1;
+    color: rgba(239, 230, 214, 0.82);
+    margin-bottom: 44px;
     font-weight: 400;
   }
-  .hero .sub em {
-    font-style: normal;
-    color: var(--pill);
+  .hero-sub strong {
+    color: #f4ede1;
     font-weight: 500;
   }
-  .hero .cta {
-    display: inline-block;
-    padding: 18px 44px;
-    background: var(--ink);
-    color: var(--paper);
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 36px;
+    background: var(--pill);
+    color: #fff;
     text-decoration: none;
     font-family: 'Noto Serif JP', serif;
     font-size: 1rem;
@@ -132,37 +169,28 @@
     font-weight: 500;
     border-radius: 2px;
     transition: all 0.4s ease;
-    border: 1px solid var(--ink);
+    border: 1px solid var(--pill);
   }
-  .hero .cta:hover {
-    background: var(--pill);
-    border-color: var(--pill);
+  .hero-cta:hover {
+    background: var(--pill-soft);
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(162, 53, 53, 0.25);
+    box-shadow: 0 12px 35px rgba(162, 53, 53, 0.45);
   }
-  .hero .cta-note {
-    margin-top: 18px;
-    font-size: 0.78rem;
-    color: var(--ink-mute);
-    letter-spacing: 0.15em;
-  }
-  .scroll-mark {
-    position: absolute;
-    bottom: 36px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.7rem;
-    letter-spacing: 0.4em;
-    color: var(--ink-mute);
+  .hero-cta .arrow {
     font-family: 'Cormorant Garamond', serif;
-    animation: pulse 2.5s ease-in-out infinite;
+    font-style: italic;
+    font-size: 1.1rem;
+    letter-spacing: 0;
   }
-  @keyframes pulse {
-    0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
-    50% { opacity: 1; transform: translateX(-50%) translateY(6px); }
+  .hero-cta-note {
+    display: block;
+    margin-top: 16px;
+    font-size: 0.78rem;
+    color: rgba(239, 230, 214, 0.5);
+    letter-spacing: 0.2em;
   }
 
-  /* SECTION COMMON */
+  /* COMMON SECTION */
   section { padding: 120px 0; position: relative; }
   .section-tag {
     font-family: 'Cormorant Garamond', serif;
@@ -181,10 +209,7 @@
     margin-bottom: 48px;
     color: var(--ink);
   }
-  h2 .marker {
-    color: var(--pill);
-    font-weight: 700;
-  }
+  h2 .marker { color: var(--pill); font-weight: 700; }
   .body-text {
     font-size: clamp(1rem, 1.2vw, 1.08rem);
     color: var(--ink-soft);
@@ -199,10 +224,7 @@
   }
 
   /* DIVIDER */
-  .divider {
-    text-align: center;
-    padding: 60px 0;
-  }
+  .divider { text-align: center; padding: 50px 0; }
   .divider::before {
     content: '◆';
     color: var(--gold);
@@ -211,116 +233,102 @@
     margin-left: 2.5em;
   }
 
-  /* WHY NOW */
-  .why { background: var(--paper-2); }
-  .why-quote {
-    font-size: clamp(1.2rem, 2vw, 1.55rem);
+  /* PROLOGUE */
+  .prologue { background: var(--paper-2); }
+  .prologue-pull {
+    font-size: clamp(1.4rem, 2.4vw, 1.85rem);
     font-weight: 500;
-    line-height: 2;
+    line-height: 1.9;
     color: var(--ink);
     text-align: center;
     margin: 0 auto 56px;
-    max-width: 640px;
-    position: relative;
-    padding: 0 24px;
+    max-width: 680px;
+    letter-spacing: 0.05em;
   }
-  .why-quote::before, .why-quote::after {
-    content: '"';
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
+  .prologue-pull em {
+    font-style: normal;
     color: var(--pill);
-    font-size: 3rem;
-    line-height: 0;
-    position: relative;
-    top: 12px;
-    opacity: 0.5;
   }
-  .why-quote::before { margin-right: 8px; }
-  .why-quote::after { margin-left: 8px; }
 
-  /* 3 PARTS */
-  .parts { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 56px; }
-  @media (min-width: 800px) {
-    .parts { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  /* THEMES (3部構成 - 章番号は出さない) */
+  .themes-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 56px;
   }
-  .part {
+  @media (min-width: 800px) {
+    .themes-grid { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  }
+  .theme {
     background: var(--paper);
     border: 1px solid var(--line);
-    padding: 40px 32px 36px;
+    padding: 44px 32px 40px;
     border-radius: 2px;
-    position: relative;
     transition: all 0.4s ease;
+    position: relative;
   }
-  .part:hover {
+  .theme:hover {
     transform: translateY(-4px);
     box-shadow: 0 20px 50px rgba(26, 23, 20, 0.08);
   }
-  .part-num {
+  .theme-num {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 0.95rem;
     color: var(--pill);
     letter-spacing: 0.3em;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
-  .part-title {
-    font-size: 1.4rem;
+  .theme-title {
+    font-size: 1.45rem;
     font-weight: 500;
-    margin-bottom: 18px;
-    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    letter-spacing: 0.12em;
     color: var(--ink);
   }
-  .part-title small {
+  .theme-title-en {
     display: block;
-    font-size: 0.8rem;
-    color: var(--ink-mute);
-    letter-spacing: 0.3em;
-    font-weight: 300;
-    margin-top: 6px;
-    font-family: 'Cormorant Garamond', serif;
-  }
-  .part-body {
-    font-size: 0.95rem;
-    color: var(--ink-soft);
-    line-height: 2;
-  }
-
-  /* CHAPTERS */
-  .chapters { background: var(--paper-2); }
-  .chapter-list {
-    margin-top: 48px;
-    border-top: 1px solid var(--line);
-  }
-  .chapter {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 24px;
-    padding: 22px 8px;
-    border-bottom: 1px solid var(--line);
-    align-items: baseline;
-    transition: background 0.3s ease;
-  }
-  .chapter:hover { background: rgba(162, 53, 53, 0.03); }
-  .chapter-no {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    color: var(--gold);
-    font-size: 0.95rem;
-    letter-spacing: 0.2em;
-  }
-  .chapter-title {
-    font-size: 1.05rem;
-    color: var(--ink);
-    font-weight: 400;
-    letter-spacing: 0.08em;
-  }
-  .chapter-title small {
-    display: block;
+    font-size: 0.85rem;
     color: var(--ink-mute);
-    font-size: 0.82rem;
-    margin-top: 4px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.3em;
+    margin-bottom: 20px;
     font-weight: 300;
+  }
+  .theme-body {
+    font-size: 0.96rem;
+    color: var(--ink-soft);
+    line-height: 2.05;
+  }
+
+  /* KEY CONCEPTS — 書影下部のラベルにインスパイア */
+  .concepts { background: var(--paper-2); }
+  .concepts-list {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 720px) {
+    .concepts-list { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  }
+  .concept {
+    background: var(--paper);
+    padding: 22px 26px;
+    border-left: 3px solid var(--pill);
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.9;
+    letter-spacing: 0.05em;
+  }
+  .concept strong {
+    display: block;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 4px;
+    letter-spacing: 0.1em;
   }
 
   /* AUDIENCE */
@@ -347,10 +355,7 @@
 
   /* AUTHOR */
   .author { background: var(--paper-2); }
-  .author-card {
-    max-width: 640px;
-    margin: 0 auto;
-  }
+  .author-card { max-width: 640px; margin: 0 auto; }
   .author-label {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -506,7 +511,6 @@
 
   @media (max-width: 600px) {
     section { padding: 80px 0; }
-    .chapter { grid-template-columns: 60px 1fr; gap: 16px; }
   }
 </style>
 </head>
@@ -514,36 +518,53 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-inner">
-    <div class="eyebrow">Coming Soon  ·  2026</div>
-    <h1>思考の<span class="accent">未来</span></h1>
-    <p class="sub">
-      AIが「処理」を奪っていくこの時代に、<br>
-      <em>考えること</em>は、<em>嗜好品</em>になる。<br><br>
-      ── 戦略コンサル・投資ファンド・経営の現場で<br>
-      20年「思考」を生業にしてきた著者が描く、<br>
-      AI時代の思考論。
-    </p>
-    <a href="#register" class="cta">発売前に登録する</a>
-    <div class="cta-note">発売時にメールでお知らせします</div>
+  <div class="hero-grid">
+    <div class="hero-cover">
+      <img src="cover.png" alt="思考の未来 ── AI時代に人間の知性はどう生きるのか（書影）">
+      <div class="hero-cover-note">Coming Soon  ·  2026</div>
+    </div>
+
+    <div class="hero-text">
+      <div class="hero-eyebrow">新刊<span class="dot">·</span>発売前予約受付中</div>
+
+      <h1>
+        認知してしまったら、<br>
+        <span class="accent">戻れない世界</span>がある。
+      </h1>
+
+      <p class="hero-sub">
+        赤いピルを飲むか、青いピルを飲むか──<br>
+        AIが人間の<strong>「処理」</strong>を奪っていく時代に、<br>
+        人間の<strong>「思考」</strong>はどう生きるのか。<br><br>
+        戦略コンサル・投資ファンド・経営の現場で<br>
+        20年「思考」を生業にしてきた著者が描く、<br>
+        新しい認知の扉を開く一冊。
+      </p>
+
+      <a href="#register" class="hero-cta">
+        発売のお知らせを受け取る  <span class="arrow">→</span>
+      </a>
+      <span class="hero-cta-note">発売時にメールでご案内します</span>
+    </div>
   </div>
-  <div class="scroll-mark">scroll</div>
 </section>
 
-<!-- WHY NOW -->
-<section class="why">
+<!-- PROLOGUE -->
+<section class="prologue">
   <div class="container">
     <span class="section-tag">Prologue</span>
-    <h2>多くの人はこの<span class="marker">構造変化</span>に気づかないまま、<br>一生を終える。</h2>
+    <p class="prologue-pull">
+      多くの人はこの<em>構造変化</em>に気づかないまま、<br>一生を終える。
+    </p>
 
     <div class="body-text">
-      私たちの脳の動きが、<strong>「思考」と「処理」</strong>に分かれていく。<br>
-      ロジックやルールで物事を整理することは「処理」とされ、AIに取って代わられる。これまで「思考」と思われていたものの大半は、実は思考ですらなかった ── そう定義される時代がもうすぐ来ます。
+      AI時代、私たちの脳の働きは <strong>「思考」と「処理」</strong> に分かれていく。<br>
+      ロジックやルールで物事を整理することは「処理」とされ、AIに取って代わられる。これまで「思考」と呼ばれていたものの大半は、実は思考ですらなかった ── そう定義される時代が、もうすぐ来ます。
     </div>
 
     <div class="body-text">
-      AIに雑に問いを投げても、推論力の強化されたAIが文脈を補完して答えてくれる。本当は<strong>自分で考えたのは2割程度</strong>なのに、「最初から自分はそう考えていた」かのように感じてしまう。<br>
-      自分の頭が良くなったと錯覚し、知性を鍛える場が減っていく。
+      AIに雑に問いを投げても、推論力の強化されたAIが文脈を補完して答えてくれる。本当は <strong>自分で考えたのは2割程度</strong> なのに、「最初から自分はそう考えていた」かのように感じてしまう。<br>
+      自分の頭が良くなったと錯覚し、知性を鍛える場は静かに消えていく。
     </div>
 
     <div class="body-text">
@@ -553,35 +574,35 @@
   </div>
 </section>
 
-<!-- 3 PARTS -->
+<!-- THEMES -->
 <section>
   <div class="container wide">
-    <span class="section-tag">Structure</span>
+    <span class="section-tag">Three Movements</span>
     <h2>三部構成で、思考の<span class="marker">行く先</span>をたどります。</h2>
 
-    <div class="parts">
-      <div class="part">
-        <div class="part-num">PART  I</div>
-        <div class="part-title">侵食<small>AI ERODES</small></div>
-        <div class="part-body">
+    <div class="themes-grid">
+      <div class="theme">
+        <div class="theme-num">I</div>
+        <div class="theme-title">侵食<span class="theme-title-en">AI ERODES</span></div>
+        <div class="theme-body">
           AIが思考を奪う。<br>
-          思考と処理の分離、思考の空洞化、高度に騙される時代、働き方と教育の地殻変動 ── まず、いま起きている地滑りを見つめます。
+          思考と処理の分離、思考の空洞化、高度に騙される時代。働き方・教育・社会構造の地殻変動 ── いま、足元で起きている地滑りを見つめます。
         </div>
       </div>
-      <div class="part">
-        <div class="part-num">PART  II</div>
-        <div class="part-title">逆説<small>NEW VALUE</small></div>
-        <div class="part-body">
+      <div class="theme">
+        <div class="theme-num">II</div>
+        <div class="theme-title">逆説<span class="theme-title-en">NEW VALUE</span></div>
+        <div class="theme-body">
           AIが生み出す、新しい価値。<br>
-          無駄と時間の再評価、言わない技術、グラデーションと複雑系、嗜好の未来 ── AIに代替されないものの輪郭を描きます。
+          無駄と時間の再評価、言わない技術と沈黙の戦略、グラデーションと複雑系 ── AIに代替されないものの輪郭が、はっきりと描かれます。
         </div>
       </div>
-      <div class="part">
-        <div class="part-num">PART  III</div>
-        <div class="part-title">回帰<small>WHAT IS HUMAN</small></div>
-        <div class="part-body">
+      <div class="theme">
+        <div class="theme-num">III</div>
+        <div class="theme-title">回帰<span class="theme-title-en">RETURN TO HUMAN</span></div>
+        <div class="theme-body">
           人間とは何か、への問い。<br>
-          意識・死・時間、アナログとテロワール、人格と会社の嗜好品化 ── 構造変化の先で、人間が立ち戻る場所を考えます。
+          意識・死・時間、アナログとテロワール、思考の多様化と哲学の進化、そして人と会社の嗜好品化 ── 人間が立ち戻る場所を考えます。
         </div>
       </div>
     </div>
@@ -590,29 +611,19 @@
 
 <div class="divider"></div>
 
-<!-- CHAPTERS -->
-<section class="chapters">
+<!-- KEY CONCEPTS -->
+<section class="concepts">
   <div class="container">
-    <span class="section-tag">Contents</span>
-    <h2>目次より<span class="marker">、</span>抜粋。</h2>
+    <span class="section-tag">Key Concepts</span>
+    <h2>本書を貫く、<span class="marker">いくつかの言葉</span>。</h2>
 
-    <div class="chapter-list">
-      <div class="chapter"><div class="chapter-no">序章</div><div class="chapter-title">認知の扉を開く<small>赤いピルを飲むか、知らないままでいるか</small></div></div>
-      <div class="chapter"><div class="chapter-no">第1章</div><div class="chapter-title">思考と処理の分離</div></div>
-      <div class="chapter"><div class="chapter-no">第2章</div><div class="chapter-title">思考の空洞化</div></div>
-      <div class="chapter"><div class="chapter-no">第3章</div><div class="chapter-title">高度に騙される時代</div></div>
-      <div class="chapter"><div class="chapter-no">第4章</div><div class="chapter-title">働き方・稼ぎ方の未来</div></div>
-      <div class="chapter"><div class="chapter-no">第5章</div><div class="chapter-title">学校と次世代の未来</div></div>
-      <div class="chapter"><div class="chapter-no">第6章</div><div class="chapter-title">社会・政治構造の変容</div></div>
-      <div class="chapter"><div class="chapter-no">第7章</div><div class="chapter-title">無駄と時間の再評価</div></div>
-      <div class="chapter"><div class="chapter-no">第8章</div><div class="chapter-title">言語の爆発と沈黙の戦略</div></div>
-      <div class="chapter"><div class="chapter-no">第9章</div><div class="chapter-title">グラデーションと複雑系の価値</div></div>
-      <div class="chapter"><div class="chapter-no">第10章</div><div class="chapter-title">嗜好の未来</div></div>
-      <div class="chapter"><div class="chapter-no">第11章</div><div class="chapter-title">意識・死・時間の再発見</div></div>
-      <div class="chapter"><div class="chapter-no">第12章</div><div class="chapter-title">アナログ・テロワール・地域の再起</div></div>
-      <div class="chapter"><div class="chapter-no">第13章</div><div class="chapter-title">思考の多様化と哲学の進化</div></div>
-      <div class="chapter"><div class="chapter-no">第14章</div><div class="chapter-title">人間・人格・会社の嗜好品化</div></div>
-      <div class="chapter"><div class="chapter-no">終章</div><div class="chapter-title">赤いピルの先に<small>思考で快楽を感じる猿が、勝つ時代になる</small></div></div>
+    <div class="concepts-list">
+      <div class="concept"><strong>思考と処理の分離</strong>脳の動きは「思考」と「処理」に二分される。処理はAIへ。</div>
+      <div class="concept"><strong>思考の空洞化</strong>AIに頼り続けると、思考の筋肉は静かに痩せていく。</div>
+      <div class="concept"><strong>高度に騙される時代</strong>推論力が高いほど、巧妙に嘘をつく。遅効性の毒として広がる。</div>
+      <div class="concept"><strong>働き方・稼ぎ方の未来</strong>意味づけと判断の責任は、人間に残る。</div>
+      <div class="concept"><strong>言わない技術 / 沈黙の戦略</strong>言語化できることはコモディティ化する。だから、言わない。</div>
+      <div class="concept"><strong>人間・会社の嗜好品化</strong>機能は均質化する。だから、誰と・どんな世界観で、が選ばれる。</div>
     </div>
   </div>
 </section>
@@ -628,7 +639,7 @@
       <div class="audience-item">「考えること」を、もう一度、楽しい時間として取り戻したい方へ。</div>
       <div class="audience-item">子どもや次の世代に、AI時代の知性をどう手渡すかを考えている親御さんへ。</div>
       <div class="audience-item">経営・事業・組織の未来を、構造から考え直したいビジネスパーソンへ。</div>
-      <div class="audience-item">そして ── 一度マトリックスの赤いピルを覗き込んでみたいすべての方へ。</div>
+      <div class="audience-item">そして ── 一度マトリックスの赤いピルを覗き込んでみたい、すべての方へ。</div>
     </div>
   </div>
 </section>
@@ -645,7 +656,7 @@
       </div>
 
       <div class="author-body">
-        ChatGPT-3.5が世に出た2025年頃からAIを触り始め、当初はあまりにのめり込みすぎて、AIと議論して号泣したことが何度もあった ── と自ら明かす。今も複数のAIを使い、思考の延長線として日々その恩恵を受けている。
+        ChatGPT-3.5が世に出た頃からAIを触り始め、当初はあまりにのめり込みすぎて、AIと議論して号泣したことが何度もあった ── と自ら明かす。今も複数のAIを使い、思考の延長線として日々その恩恵を受けている。
       </div>
 
       <div class="author-body">
@@ -706,10 +717,8 @@
 <script type="module">
   import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
 
-  // ▼▼ Supabase設定 ▼▼
   const SUPABASE_URL = 'https://ppthjmbglpanedwmhnrs.supabase.co'
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwdGhqbWJnbHBhbmVkd21obnJzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA4MDQ0ODksImV4cCI6MjA5NjM4MDQ4OX0.9ZhN__zftdtMiicmO18raD81aTWN-dUsT7m25uP2Klg'
-  // ▲▲
 
   const form = document.getElementById('preorderForm')
   const msgEl = document.getElementById('formMessage')
@@ -728,13 +737,6 @@
 
     const email = document.getElementById('email').value.trim()
     const name = document.getElementById('name').value.trim() || null
-
-    if (SUPABASE_URL === 'YOUR_SUPABASE_URL') {
-      showMsg('（開発中）Supabase接続前です。後ほどお試しください。', 'error')
-      btn.disabled = false
-      btn.textContent = '登録する'
-      return
-    }
 
     try {
       const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
