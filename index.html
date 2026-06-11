@@ -550,12 +550,58 @@
   /* DIVIDER */
   .divider::before { color: var(--gold); opacity: 0.6; }
 
+  /* 右上: think & feel Guild へ戻るリンク */
+  .guild-back {
+    position: fixed;
+    top: 18px;
+    right: 22px;
+    z-index: 50;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(11, 18, 32, 0.7);
+    border: 1px solid rgba(212, 175, 111, 0.35);
+    border-radius: 999px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+  }
+  .guild-back:hover {
+    color: var(--gold-bright);
+    border-color: var(--gold);
+    background: rgba(11, 18, 32, 0.92);
+  }
+  .guild-back-arrow {
+    color: var(--gold);
+    font-size: 14px;
+    line-height: 1;
+  }
+  @media (max-width: 600px) {
+    .guild-back {
+      top: 10px;
+      right: 10px;
+      padding: 6px 10px;
+      font-size: 10.5px;
+    }
+  }
+
   @media (max-width: 600px) {
     section { padding: 80px 0; }
   }
 </style>
 </head>
 <body>
+
+<!-- 右上: ギルドに戻る -->
+<a href="https://guild.tripnavig.com/" class="guild-back" rel="noopener">
+  <span class="guild-back-arrow">←</span>
+  <span>think &amp; feel Guild</span>
+</a>
 
 <!-- HERO -->
 <section class="hero">
